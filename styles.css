@@ -621,23 +621,33 @@ body {
 }
 
 /* Responsive Design */
-@media (max-width: 600px) {
+@media (max-width: 800px) {
     .container {
-        margin: 15px;
-        padding: 20px;
+        margin: 20px;
+        padding: 22px;
+    }
+
+    .top-bar {
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 15px;
+    }
+
+    .top-left {
+        width: 100%;
     }
 
     .top-bar h1 {
-        font-size: 1.4em;
+        font-size: 1.5em;
     }
 
-    .todo-item {
-        grid-template-columns: 1fr;
+    .welcome-text {
+        font-size: 0.95em;
     }
 
-    .todo-actions {
-        grid-column: 1;
-        width: 100%;
+    .settings-btn {
+        padding: 8px 14px;
+        font-size: 0.95em;
     }
 
     .options-row {
@@ -646,9 +656,43 @@ body {
 
     .category-select,
     .date-input,
-    .add-btn {
+    .add-btn,
+    .search-input {
         width: 100%;
         min-width: unset;
+    }
+
+    .category-filter {
+        padding: 12px;
+        gap: 6px;
+    }
+
+    .todo-item {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        grid-template-columns: none;
+    }
+
+    .todo-content {
+        width: 100%;
+    }
+
+    .todo-meta {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .todo-actions {
+        grid-column: auto;
+        width: 100%;
+        justify-content: flex-end;
+        margin-top: 12px;
+    }
+
+    .todo-actions button {
+        flex: 1;
+        min-width: 0;
     }
 
     .footer-section {
@@ -658,5 +702,48 @@ body {
 
     .todo-counter {
         min-width: unset;
+    }
+}
+
+@media (max-width: 500px) {
+    .container {
+        margin: 12px;
+        padding: 18px;
+    }
+
+    .top-bar {
+        padding: 12px;
+    }
+
+    .top-bar h1 {
+        font-size: 1.3em;
+    }
+
+    .settings-btn {
+        padding: 8px 12px;
+    }
+
+    .todo-item {
+        padding: 14px;
+    }
+
+    .todo-actions {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+
+    .edit-btn,
+    .delete-btn,
+    .clear-all-btn,
+    .setting-btn,
+    .btn-save,
+    .btn-cancel {
+        width: 100%;
+    }
+
+    .modal-content {
+        width: 95%;
+        padding: 20px;
     }
 }
