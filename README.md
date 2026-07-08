@@ -2,6 +2,10 @@
 
 A simple, interactive to-do list application built with vanilla HTML, CSS, and JavaScript.
 
+## Live Demo
+
+[View the deployed app on GitHub Pages](https://kevin-manashian.github.io/to-do-list-webapp/)
+
 ## Features
 
 ✅ Add new tasks
