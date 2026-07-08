@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mindful To-Do List</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="top-left">
+            <h1>Welcome, <span id="userName">Guest</span></h1>
+            <p class="welcome-text">Your daily tasks all in one place</p>
+        </div>
+        <button id="settingsBtn" class="settings-btn">⚙</button>
+    </div>
+
+    <div class="container">
+        <!-- Search & Filter Section -->
+        <div class="search-section">
+            <input 
+                type="text" 
+                id="searchInput" 
+                placeholder="Search tasks..."
+                class="search-input"
+            >
+        </div>
+
+        <!-- Add Task Section -->
+        <div class="add-section">
+            <div class="input-row">
+                <input 
+                    type="text" 
+                    id="todoInput" 
+                    placeholder="What do you want to accomplish?"
+                    class="todo-input"
+                >
+            </div>
+
+            <div class="options-row">
+                <select id="categorySelect" class="category-select">
+                    <option value="Personal">Personal</option>
+                    <option value="Work">Work</option>
+                    <option value="Health">Health</option>
+                    <option value="Shopping">Shopping</option>
+                </select>
+
+                <input 
+                    type="date" 
+                    id="dueDateInput" 
+                    class="date-input"
+                >
+
+                <button id="addBtn" class="add-btn">+ Add Task</button>
+            </div>
+        </div>
+
+        <!-- Category Filter -->
+        <div class="category-filter">
+            <button class="category-btn active" data-category="All">All</button>
+            <button class="category-btn" data-category="Personal">Personal</button>
+            <button class="category-btn" data-category="Work">Work</button>
+            <button class="category-btn" data-category="Health">Health</button>
+            <button class="category-btn" data-category="Shopping">Shopping</button>
+        </div>
+
+        <!-- Current/No Date Tasks -->
+        <div class="tasks-section">
+            <h3 class="section-title">Your Tasks</h3>
+            <ul id="todoList" class="todo-list">
+                <!-- Todos will appear here -->
+            </ul>
+        </div>
+
+        <!-- Upcoming Tasks with Dates -->
+        <div class="tasks-section" id="upcomingSection" style="display: none;">
+            <h3 class="section-title">Upcoming Tasks for Other Days</h3>
+            <ul id="upcomingList" class="todo-list">
+                <!-- Upcoming todos will appear here -->
+            </ul>
+        </div>
+
+        <!-- Counter & Actions -->
+        <div class="footer-section">
+            <p class="todo-counter">
+                Total: <span id="totalCount">0</span> | Completed: <span id="doneCount">0</span>
+            </p>
+            <button id="clearAllBtn" class="clear-all-btn">Clear Completed</button>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Settings</h2>
+            <div class="settings-options">
+                <div class="setting-item">
+                    <label for="darkModeToggle">Dark Mode</label>
+                    <input type="checkbox" id="darkModeToggle" class="toggle-checkbox">
+                </div>
+                <div class="setting-item">
+                    <button id="changeNameSettingsBtn" class="setting-btn">Change Name</button>
+                </div>
+            </div>
+            <button id="closeSettingsBtn" class="btn-cancel" style="width: 100%; margin-top: 20px;">Close</button>
+        </div>
+    </div>
+
+    <!-- Welcome Modal -->
+    <div id="welcomeModal" class="modal">
+        <div class="modal-content welcome-modal">
+            <h2>Welcome to Mindful Tasks</h2>
+            <p class="welcome-subtitle">What's your name?</p>
+            <input type="text" id="nameInput" class="modal-input" placeholder="Enter your name...">
+            <button id="startBtn" class="btn-save">Get Started</button>
+        </div>
+    </div>
+
+    <!-- Change Name Modal -->
+    <div id="changeNameModal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Change Your Name</h2>
+            <input type="text" id="newNameInput" class="modal-input" placeholder="Enter your name...">
+            <div class="modal-buttons">
+                <button id="confirmNameBtn" class="btn-save">Save</button>
+                <button id="cancelNameBtn" class="btn-cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Edit Task</h2>
+            <input type="text" id="editTaskText" class="modal-input" placeholder="Task description">
+            <select id="editCategory" class="modal-select">
+                <option value="Personal">Personal</option>
+                <option value="Work">Work</option>
+                <option value="Health">Health</option>
+                <option value="Shopping">Shopping</option>
+            </select>
+            <input type="date" id="editDueDate" class="modal-input">
+            <div class="modal-buttons">
+                <button id="saveEditBtn" class="btn-save">Save</button>
+                <button id="cancelEditBtn" class="btn-cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
