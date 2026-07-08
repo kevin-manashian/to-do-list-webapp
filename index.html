@@ -4,15 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mindful To-Do List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap&subset=latin" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="top-bar">
         <div class="top-left">
-            <h1>Welcome, <span id="userName">Guest</span></h1>
-            <p class="welcome-text">Your daily tasks all in one place</p>
+            <p class="greeting-text" id="greetingText">Good morning, <span id="userName">Guest</span></p>
+            <h1 class="app-title">Mindful To-Do List</h1>
+            <p class="subheading">A calm place to focus on the work that matters.</p>
         </div>
-        <button id="settingsBtn" class="settings-btn">⚙</button>
+        <div class="top-right">
+            <div class="progress-ring" role="img" aria-label="Today's completion progress">
+                <svg viewBox="0 0 42 42" class="progress-ring__svg" aria-hidden="true">
+                    <circle class="progress-ring__bg" cx="21" cy="21" r="18"></circle>
+                    <circle class="progress-ring__circle" cx="21" cy="21" r="18"></circle>
+                </svg>
+                <span class="progress-ring__label" id="completionPercentage">0%</span>
+            </div>
+            <button id="settingsBtn" class="icon-btn" aria-label="Open settings" title="Open settings">
+                <span aria-hidden="true">⚙</span>
+            </button>
+        </div>
     </div>
 
     <div class="container">
@@ -39,10 +54,10 @@
 
             <div class="options-row">
                 <select id="categorySelect" class="category-select">
-                    <option value="Personal">Personal</option>
-                    <option value="Work">Work</option>
-                    <option value="Health">Health</option>
-                    <option value="Shopping">Shopping</option>
+                    <option value="Personal">☀ Personal</option>
+                    <option value="Work">⚙ Work</option>
+                    <option value="Health">🍃 Health</option>
+                    <option value="Shopping">🛍 Shopping</option>
                 </select>
 
                 <input 
@@ -56,16 +71,17 @@
         </div>
 
         <!-- Category Filter -->
-        <div class="category-filter">
-            <button class="category-btn active" data-category="All">All</button>
-            <button class="category-btn" data-category="Personal">Personal</button>
-            <button class="category-btn" data-category="Work">Work</button>
-            <button class="category-btn" data-category="Health">Health</button>
-            <button class="category-btn" data-category="Shopping">Shopping</button>
+        <div class="category-filter segmented-control">
+            <div class="segment-indicator" aria-hidden="true"></div>
+            <button class="category-btn active" data-category="All"><span>All</span><span class="count-badge">0</span></button>
+            <button class="category-btn" data-category="Personal"><span>Personal</span><span class="count-badge">0</span></button>
+            <button class="category-btn" data-category="Work"><span>Work</span><span class="count-badge">0</span></button>
+            <button class="category-btn" data-category="Health"><span>Health</span><span class="count-badge">0</span></button>
+            <button class="category-btn" data-category="Shopping"><span>Shopping</span><span class="count-badge">0</span></button>
         </div>
 
         <!-- Current/No Date Tasks -->
-        <div class="tasks-section">
+        <div class="tasks-section today-card">
             <h3 class="section-title">Your Tasks</h3>
             <ul id="todoList" class="todo-list">
                 <!-- Todos will appear here -->
@@ -73,11 +89,11 @@
         </div>
 
         <!-- Upcoming Tasks with Dates -->
-        <div class="tasks-section" id="upcomingSection" style="display: none;">
+        <div class="tasks-section upcoming-card" id="upcomingSection" style="display: none;">
             <h3 class="section-title">Upcoming Tasks for Other Days</h3>
-            <ul id="upcomingList" class="todo-list">
+            <div id="upcomingList" class="todo-list upcoming-groups">
                 <!-- Upcoming todos will appear here -->
-            </ul>
+            </div>
         </div>
 
         <!-- Counter & Actions -->
@@ -88,6 +104,8 @@
             <button id="clearAllBtn" class="clear-all-btn">Clear Completed</button>
         </div>
     </div>
+
+    <button id="addFab" class="fab" aria-label="Add task" title="Add task">+</button>
 
     <!-- Settings Modal -->
     <div id="settingsModal" class="modal hidden">
@@ -134,10 +152,10 @@
             <h2>Edit Task</h2>
             <input type="text" id="editTaskText" class="modal-input" placeholder="Task description">
             <select id="editCategory" class="modal-select">
-                <option value="Personal">Personal</option>
-                <option value="Work">Work</option>
-                <option value="Health">Health</option>
-                <option value="Shopping">Shopping</option>
+                <option value="Personal">☀ Personal</option>
+                <option value="Work">⚙ Work</option>
+                <option value="Health">🍃 Health</option>
+                <option value="Shopping">🛍 Shopping</option>
             </select>
             <input type="date" id="editDueDate" class="modal-input">
             <div class="modal-buttons">
